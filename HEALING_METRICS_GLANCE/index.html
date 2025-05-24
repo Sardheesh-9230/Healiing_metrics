@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Metrics - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-container" id="login-section">
+            <div class="login-header">
+                <h2>Healing Metrics</h2>
+                <p>Your health data at a glance</p>
+            </div>
+            <div class="login-form">
+                <form id="login-form">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <div>
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="dashboard-container hide" id="dashboard-section">
+            <header>
+                <div class="logo">
+                    <h1>Healing Metrics</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active" data-section="dashboard">Dashboard</a></li>
+                        <li><a href="#" data-section="about">About Us</a></li>
+                        <li><a href="#" data-section="team">Our Team</a></li>
+                        <li><a href="#" data-section="contact">Contact</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <main>
+                <!-- Dashboard iframe section -->
+                <section id="dashboard-content" class="content-section active">
+                    <h2>Your Health Dashboard</h2>
+                    <div class="dashboard-wrapper">
+                        <iframe id="dashboard-iframe" src="https://us3.ca.analytics.ibm.com/bi/?perspective=dashboard&amp;pathRef=.my_folders%2Fbi%2Bproject%2Fglance%2Bdashboard&amp;closeWindowOnLastView=true&amp;ui_appbar=false&amp;ui_navbar=false&amp;shareMode=embedded&amp;action=view&amp;mode=dashboard&amp;subView=model00000196a8f61993_00000000" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+                    </div>
+                </section>
+                
+                <!-- About section with parallax effect and interactive elements -->
+                <section id="about-content" class="content-section">
+                    <div class="parallax-container" id="about-parallax">
+                        <div class="parallax-content">
+                            <h2>About Healing Metrics</h2>
+                            <p>Healing Metrics is a comprehensive health monitoring platform designed to provide you with real-time insights into your health data. Our state-of-the-art analytics tools help you track, understand, and improve your well-being through data-driven decisions.</p>
+                            <p>With customizable dashboards and intelligent alerts, we empower you to take control of your health journey and achieve your wellness goals with confidence.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Features Section -->
+                    <div class="interactive-features">
+                        <h3>Interactive Health Features</h3>
+                        
+                        <div class="features-container">
+                            <div class="feature-card" id="feature-analytics">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Advanced Analytics</h4>
+                                <p>Gain deeper insights with our advanced health analytics tools.</p>
+                                <button class="feature-btn" data-feature="analytics">Learn More</button>
+                            </div>
+                            
+                            <div class="feature-card" id="feature-personalization">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-cog"></i>
+                                </div>
+                                <h4>Personalized Health Plans</h4>
+                                <p>Customized recommendations based on your unique health profile.</p>
+                                <button class="feature-btn" data-feature="personalization">Learn More</button>
+                            </div>
+                            
+                            <div class="feature-card" id="feature-integration">
+                                <div class="feature-icon">
+                                    <i class="fas fa-link"></i>
+                                </div>
+                                <h4>Device Integration</h4>
+                                <p>Connect with your favorite health devices and wearables.</p>
+                                <button class="feature-btn" data-feature="integration">Learn More</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Feature Details Modal -->
+                        <div class="feature-modal" id="feature-modal">
+                            <div class="modal-content">
+                                <span class="close-modal">&times;</span>
+                                <div class="modal-header">
+                                    <h3 id="modal-title">Feature Title</h3>
+                                </div>
+                                <div class="modal-body" id="modal-body">
+                                    <!-- Content will be dynamically inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive FAQ Accordion -->
+                    <div class="faq-section">
+                        <h3>Frequently Asked Questions</h3>
+                        
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">How secure is my health data?</div>
+                                <div class="accordion-content">
+                                    <p>Your health data is encrypted using industry-leading standards. We comply with HIPAA regulations and implement multiple layers of security to ensure your information remains private and secure at all times.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">Can I export my health data?</div>
+                                <div class="accordion-content">
+                                    <p>Yes, Healing Metrics allows you to export your health data in various formats including PDF, CSV, and JSON. You can easily share your information with healthcare providers or download it for personal records.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">How often is the dashboard updated?</div>
+                                <div class="accordion-content">
+                                    <p>Our dashboard updates in real-time as new data is received from your connected devices. Historical data is processed and analyzed daily to provide you with the most accurate trends and insights.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Team section -->
+                <section id="team-content" class="content-section">
+                    <h2>Our Team</h2>
+                    <div class="team-members">
+                        <div class="team-member team-lead highlight-card">
+                            <div class="member-image">
+                                <img src="images/teamlead.jpg" alt="Sardheesh" onerror="this.src='images/placeholder-person.jpg'">
+                            </div>
+                            <h3>Sardheesh</h3>
+                            <p>Team Lead & Dashboard Creator</p>
+                            <p>Sardheesh leads our team with expertise in creating powerful, intuitive health dashboards that transform complex data into actionable insights.</p>
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/sardheesh-muthusamy-a02272290" target="_blank" class="social-btn linkedin-btn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="https://github.com/Sardheesh-9230" target="_blank" class="social-btn github-btn">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                            <div class="team-lead-badge">
+                                <i class="fas fa-crown"></i> Team Lead
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="" alt="Vasanth Kumar" onerror="this.src='images/.jpg'">
+                            </div>
+                            <h3>Vasanth Kumar</h3>
+                            <p>Data Analyst</p>
+                            <p>Vasanth brings deep analytical skills to the team, specializing in health metrics processing and statistical analysis that powers our dashboard insights.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="" alt="Pravenna" onerror="this.src='images/placeholder-person.jpg'">
+                            </div>
+                            <h3>Pravenna</h3>
+                            <p>Frontend Developer</p>
+                            <p>Pravenna crafts beautiful and responsive user interfaces that make our health metrics accessible and engaging for all users.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Contact section -->
+                <section id="contact-content" class="content-section">
+                    <h2>Contact Us</h2>
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
