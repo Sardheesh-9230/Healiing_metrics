@@ -1,5 +1,46 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# GitHub Pages Deployment Workflow for Healing Metrics Application
+# 
+# This workflow automatically deploys the Healing Metrics dashboard to GitHub Pages
+# whenever changes are pushed to the main branch or manually triggered.
+#
+# TROUBLESHOOTING GUIDE:
+# ======================
+# 
+# If GitHub Pages deployment fails, check the following:
+#
+# 1. Repository Settings:
+#    - Go to Settings > Pages in your repository
+#    - Source should be set to "GitHub Actions"
+#    - If using a custom domain, ensure CNAME file is properly configured
+#
+# 2. Branch Protection:
+#    - Ensure the main branch allows GitHub Actions to run
+#    - Check if any branch protection rules are blocking the deployment
+#
+# 3. Permissions:
+#    - Verify that GitHub Actions has permission to write to the repository
+#    - Check if the GITHUB_TOKEN has the necessary permissions (set below)
+#
+# 4. File Structure:
+#    - The main application files are in the HEALING_METRICS_GLANCE directory
+#    - Ensure index.html exists in the deployment path
+#    - Check for any broken relative paths in HTML/CSS/JS files
+#
+# 5. Common Issues:
+#    - 404 errors: Check if the deployment path is correct
+#    - Blank page: Check browser console for JavaScript errors
+#    - Missing assets: Verify all image/CSS/JS paths are relative, not absolute
+#    - MIME type errors: Ensure file extensions are correct (.html, .css, .js)
+#
+# 6. Debugging Steps:
+#    - Check the Actions tab for workflow run details and error messages
+#    - Review the deployment logs for specific error information
+#    - Test the site locally by serving the HEALING_METRICS_GLANCE directory
+#    - Validate HTML/CSS/JS syntax using browser developer tools
+#
+# For more help, see: https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages
+
+name: Deploy Healing Metrics to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -10,10 +51,11 @@ on:
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# These permissions are required for the workflow to publish to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read      # Read repository contents
+  pages: write        # Write to GitHub Pages
+  id-token: write     # Write ID tokens for authentication
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -22,22 +64,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  # Single deploy job since we're just deploying static content
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Pages
+        with:
+          # Fetch the full history to ensure we have all files
+          fetch-depth: 0
+          
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+        
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Deploy from the HEALING_METRICS_GLANCE directory where the web app files are located
+          # This directory contains index.html, CSS, JS, and image files
+          path: './HEALING_METRICS_GLANCE'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
